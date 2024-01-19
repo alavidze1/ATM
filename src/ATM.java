@@ -83,6 +83,45 @@ public class ATM {
                 }
 
 
+            }else if(menuOption==3){
+                System.out.println("From which account are you transferring money?1 For checking 2 for savings");
+                int transferFrom = in.nextInt();
+                in.nextLine();
+                double transferAmount = in.nextDouble();
+                in.nextLine();
+                if(transferFrom==1){
+                    if(checking.getCurrentBalance()<transferAmount){
+                        System.out.println("insufficient funds");
+                    }else{
+                        checking.decreaseBalance(transferAmount);
+                        savings.increaseBalance(transferAmount);
+                        checking.printAccountInfo();
+                        savings.printAccountInfo();
+                    }
+
+                }
+                else{
+                    if(savings.getCurrentBalance()<transferAmount){
+                        System.out.println("insufficient funds");
+                    }else{
+                        checking.increaseBalance(transferAmount);
+                        savings.decreaseBalance(transferAmount);
+                        savings.printAccountInfo();
+                        checking.printAccountInfo();
+                    }
+                }
+            }
+            else if(menuOption==4){
+                savings.printAccountInfo();
+                checking.printAccountInfo();
+            }else if(menuOption==5){
+                System.out.println("Work in progress. Need to implement transaction history.");
+            }
+            else if(menuOption==6){
+                System.out.println("What would you like to be your new PIN?");
+                int newPin = in.nextInt();
+                in.nextLine();
+                customer.updatePin(newPin);
             }
 
         }
