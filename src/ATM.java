@@ -62,6 +62,23 @@ public class ATM {
                             savings.decreaseBalance(withdrawAmount);
                             System.out.println("Amount withdrawn successfully");
                             savings.printAccountInfo();
+                            if(withdrawAmount<20){
+                                System.out.println("The requested amount will be given in " + (int)(withdrawAmount/5) + "$5 bills.");
+                            }
+                            else{
+                                System.out.println("How many $20 bills would you like?");
+                                int twenties = in.nextInt();
+                                in.nextLine();
+                                if(twenties==0){
+                                    System.out.println("Successfully outputted " + (withdrawAmount-(twenties*20))/5 + " $5 bills.");
+                                }
+                                else if(twenties ==1){
+                                    System.out.println("Successfully outputted 1 $20 bill and " + (withdrawAmount-(twenties*20))/5 + " $5 bills.");
+                                }
+                                else{
+                                    System.out.println("Successfully outputted " + twenties + " $20 bills and " + (withdrawAmount-(twenties*20))/5 + " $5 bills.");
+                                }
+                            }
                         }
                 }
 
@@ -84,7 +101,7 @@ public class ATM {
 
 
             }else if(menuOption==3){
-                System.out.println("From which account are you transferring money?1 For checking 2 for savings");
+                System.out.println("From which account are you transferring money? 1 For checking 2 for savings");
                 int transferFrom = in.nextInt();
                 in.nextLine();
                 double transferAmount = in.nextDouble();
