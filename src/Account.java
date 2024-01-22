@@ -12,7 +12,7 @@ public class Account {
         currentBalance+=balChange;
     }
     public void printAccountInfo(){
-        System.out.println(accountName + "Balance: $" + currentBalance);
+        System.out.println(accountName + " Balance: $" + currentBalance);
     }
     public void increaseBalance(double amount){currentBalance+=amount;}
     public void decreaseBalance(double amount){currentBalance-=amount;}
